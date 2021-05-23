@@ -1,0 +1,111 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Update Profile{% endblock %}
+{% block content %}
+<div class="conatiner">
+	<div class="card col-md-6 mx-auto mt-4 shadow-lg">
+		<h3 class="bg-light text-danger text-center mt-2 border rounded">Update your profile</h3>
+		<div class="card-body">
+			<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+			{% if user.role == 1 %}
+			{{mu.as_p}}
+	<!-- 		<table class="table table-borderless">
+				<tr>
+					<th>Username</th>
+					<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Age</th>
+					<td>{{user.age}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr>
+				<tr>
+					<th>First name</th>
+					<td>{{user.first_name}}</td>
+				</tr>
+				<tr>
+					<th>Last name</th>
+					<td>{{user.last_name}}</td>
+				</tr>
+				<tr>
+					<th>Hospital name</th>
+					<td>{{user.hospital_name}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number</th>
+					<td>{{user.phone_no}}</td>
+				</tr>
+				<tr>
+					<th>PAN number</th>
+					<td>{{user.pan_no}}</td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td>{{user.address}}</td>
+				</tr>
+			</table> -->
+			{% elif user.role == 2 %}
+			{{ou.as_p}}
+			<!-- <table>
+				
+				<tr>
+					<th>Username</th>
+					<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Age</th>
+					<td>{{user.age}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr>
+				<tr>
+					<th>First name</th>
+					<td>{{user.first_name}}</td>
+				</tr>
+				<tr>
+					<th>Last name</th>
+					<td>{{user.last_name}}</td>
+				</tr>
+				<tr>
+					<th>Organization name</th>
+					<td>{{user.organization_name}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number</th>
+					<td>{{user.phone_no}}</td>
+				</tr>
+				<tr>
+					<th>PAN number</th>
+					<td>{{user.pan_no}}</td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td>{{user.address}}</td>
+				</tr>
+				</table> -->
+				{% elif user.role == 3 %}
+				<!-- <table>
+				<th>Username</th>
+				<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr> -->
+				{{gu.as_p}}
+			</table>
+			{% endif %}
+			<!-- 	{{us.as_p}}
+				{{e.as_p}}
+				{% csrf_token %} -->
+				<input type="submit" value="Update" class="btn btn-block btn-secondary form-control my-2">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

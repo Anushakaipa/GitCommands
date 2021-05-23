@@ -1,0 +1,123 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="card col-md-4 mt-4 shadow-lg">
+			<h3 class="p-3 bg-warning text-center text-white border rounded my-2">Info</h3>
+			<img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" height=230px width=90%>
+			<div class="card-body">
+				<h4>Hi {{user.username}}</h4>
+				<div class="row">
+					<div class="col">
+						<a href="#" class="form-control btn btn-info m-2 text-light">Back</a>
+					</div>
+					<div class="col">
+						<a href="{% url 'upf' %}" class="form-control btn btn-secondary m-2 text-light">Update</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card col mt-4 shadow-lg">
+			<h3 class="p-3 bg-primary text-center text-white border rounded my-2">User details</h3>
+			<form method="POST">
+				{% csrf_token %}
+			{% if user.role == 1 %}
+		<!-- 	{{mu.as_p}} -->
+			<table class="table table-borderless">
+				<tr>
+					<th>Username</th>
+					<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Age</th>
+					<td>{{user.age}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr>
+				<tr>
+					<th>First name</th>
+					<td>{{user.first_name}}</td>
+				</tr>
+				<tr>
+					<th>Last name</th>
+					<td>{{user.last_name}}</td>
+				</tr>
+				<tr>
+					<th>Hospital name</th>
+					<td>{{user.hospital_name}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number</th>
+					<td>{{user.phone_no}}</td>
+				</tr>
+				<tr>
+					<th>PAN number</th>
+					<td>{{user.pan_no}}</td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td>{{user.address}}</td>
+				</tr>
+			</table>
+			{% elif user.role == 2 %}
+		<!-- 	{{ou.as_p}} -->
+			<table>
+				
+				<tr>
+					<th>Username</th>
+					<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Age</th>
+					<td>{{user.age}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr>
+				<tr>
+					<th>First name</th>
+					<td>{{user.first_name}}</td>
+				</tr>
+				<tr>
+					<th>Last name</th>
+					<td>{{user.last_name}}</td>
+				</tr>
+				<tr>
+					<th>Organization name</th>
+					<td>{{user.organization_name}}</td>
+				</tr>
+				<tr>
+					<th>Phone Number</th>
+					<td>{{user.phone_no}}</td>
+				</tr>
+				<tr>
+					<th>PAN number</th>
+					<td>{{user.pan_no}}</td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td>{{user.address}}</td>
+				</tr>
+				</table>
+				{% elif user.role == 3 %}
+				<table>
+				<th>Username</th>
+				<td>{{user.username}}</td>
+				</tr>
+				<tr>
+					<th>Email Address</th>
+					<td>{{user.email}}</td>
+				</tr>
+				<!-- {{gu.as_p}}
+ -->			</table>
+			{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+             

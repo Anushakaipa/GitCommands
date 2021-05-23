@@ -1,0 +1,94 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Main{% endblock %}
+{% block content %}
+<div class="container-fluid" style="margin-top: 83px;">
+	<table class="table table-striped">
+		<tr>
+					<th>S.No</th>
+					<th>Pharmacy name</th>
+					<th>Medicine name</th>
+					<th>Quantity</th>
+					<!-- <th>Batch number</th> -->
+					<th>Category</th>
+					<th>Manufacturer date</th>
+					<!-- <th>Entry date</th> -->
+					<th>Expiry date</th>
+					<th>Organization name</th>
+					<th>Tablets Required</th>
+					<!-- <th>{{k.medicine_name}}</th>
+					<th>{{k.quantity}}</th>
+					<th>{{k.batch_no}}</th>
+					<th>{{k.category}}</th>
+					<th>{{k.entry_date}}</th>
+					<th>{{k.expiry_date}}</th> -->
+				</tr>
+	{% if user.export.is_medicinist %}
+		{% for k in it %}
+					
+				
+						<!-- <td>{{k.medicine_name}}</td>
+						<td>{{k.quantity}}</td>
+						<td>{{k.batch_no}}</td>
+						<td>{{k.category}}</td>
+						<td>{{k.entry_date}}</td>
+						<td>{{k.expiry_date}}</td> -->
+						<h3><span>{% if k.is_status == 0 %}<span class="bg-danger text-light p-1 border rounded">Available</span>{% else %}<span class="bg-primary text-light border rounded p-1">Out of Stock</span>{% endif%}</span></h3>
+					<!-- <h3>{{k.medicine_name}}</h3>
+					<h4>{{k.entry_date}}</h4>
+					<h3>{{k.batch_no}}</h3>
+					<h6>Stock <span class="bg-success text-light border rounded border-danger p-1 mx-1">{{k.quantity}}</span><span>{% if k.is_status == 0 %}<span class="bg-secondary text-light p-1 border rounded">Available</span>{% else %}<span class="bg-danger text-light border rounded p-1">Out of Stock</span>{% endif%}</span></h6>
+				<div class="row mt-3">
+					<div class="col">
+						<a href="#" class="btn btn-info text-light col-sm">Add to Cart</a>
+					</div>
+					<div class="col">
+						<a href="#" class="btn btn-success text-light col-sm">Rs.{{k.price}}</a>
+					</div>
+				</div> -->
+			<!-- 	</div> -->
+
+		{% endfor %}
+		
+		{% else %}
+		{% for k in d %}
+			<tr>
+				    <td>{{forloop.counter}}</td>
+					<td>{{k.1}}</td>
+					<td>{{k.2}}</td>
+					<td>{{k.3}}</td>
+					<td>{{k.4}}</td>
+					<td>{{k.5}}</td>
+					<!-- <td>{{k.6}}</td> -->
+					<td>{{k.7}}</td>
+					<td>{{k.8}}</td>
+					<td>{{k.9}}</td>
+					<!-- <td><a class="btn btn-primary mx-1" href="#">Edit</a><a class="btn btn-danger mx-1" href="#">Delete</a></td> -->
+					<td><h6>{% if k.2 == 0 %}<span class="bg-secondary text-light p-1 border rounded">Available</span>{% else %}<span class="btn btn-warning text-light border rounded p-1">Out of Stock</span>{% endif%}</span></h6></td>
+					<td><a href="{% url 'rq' k.id %}" class="bg-primary text-light p-1 border rounded btn btn-block mx-auto">Request</a></td>
+					</tr>
+				
+				{% endfor %}
+			</table>
+			<!-- <div class="col col-md-3">
+				<div class="card my-2">
+					<h3 class="bg-warning text-center border rounded p-1">{{k.0}}</h3>
+					<img class="card-img-top" src="{{k.4.url}}" alt="Card image" style="height:150px;width:100%">
+					<div class="card-body">
+					<h3>{{k.1}}</h3>
+					<h5>{{k.7}} <span>{{k.6}}</span></h5> 
+					<h6>Stock <span class="bg-success text-light border rounded border-danger p-1 mx-1">{{k.2}} Kgs</span><span>{% if k.5 == 0 %}<span class="bg-secondary text-light p-1 border rounded">Available</span>{% else %}<span class="bg-danger text-light border rounded p-1">Out of Stock</span>{% endif%}</span></h6>
+				<div class="row mt-3">
+					<div class="col">
+						<a href="#" class="btn btn-info text-light col-sm">Add to Cart</a>
+					</div>
+					<div class="col">
+						<a href="#" class="btn btn-success text-light col-sm">Rs.{{k.3}}</a>
+					</div>
+				</div>
+				</div>
+				</div>
+			</div> -->
+		
+	{% endif %}
+	</div>
+{% endblock %}

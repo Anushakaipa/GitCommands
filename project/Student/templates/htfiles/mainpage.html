@@ -1,0 +1,33 @@
+{% extends 'htfiles/header.html' %}
+{% block title %} Main Page {% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="jumbotron">
+		{% if user.is_superuser %}
+		<h3>Super User</h3>
+		{% elif user.role == 1 %}
+		<h3>Medicinist Person </h3>
+		{% elif user.role == 2 %}
+		<h3>Organization Person </h3>
+		{% else %}
+		<h3>Anonymous User</h3>
+		{% endif %}
+	</div>
+	{% if user.role == 1 %}
+	<div class="row">
+		{% for j in t %}
+		<div class="col col-md-3">
+			<div class="card my-2">
+				<img class="card-img-top" src="{{j.impf.url}}" alt="Card image" style="height:150px;width:100%">
+				<div class="card-body">
+					<h4>{{j.category}}</h4>
+				<h3>{{j.medicine_name}} <span>{{j.quantity}}</span></h3>
+				<a href="#" class="btn btn-secondary form-control">View</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}profile{% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="card col-md-6 mt-4 mx-auto">
+		<h3 class="bg-dark text-white text-center p-2 border rounded mt-2">Service Request</h3>
+		<div class="card-body">
+			<form method="POST">
+		{% csrf_token %}
+		
+         <h4 class="font-weight-italic">Hi welcome {{user.username}}</h4>
+			<div class="card-body">
+				{{c.as_p}}
+		<!-- <img src="" height="200px" width="100%">	
+		 -->
+		<input type="submit" value="Approve" class="form-control p-3 mt-3 bg-success text-white text-center border rounded">
+	   </div>
+	</form>
+</div>
+</div>
+{% endblock %}

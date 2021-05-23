@@ -1,0 +1,149 @@
+{% load static %}
+<style type="text/css">
+ 
+.nav-link
+{
+  color: dark;
+}
+</style>
+<div class="row">
+  <div class="col col-md-1" style="margin-left:1px;">
+  <img src="{% static 'images/NGO.jpg' %}" alt="logo" style="width:90px; height: 70px;" class="rounded-circle">  
+  </div>
+  <div class="col mt-2">
+    <h3>Helping NGO</h3>
+    <p>Address</p>
+  </div>
+
+  <div class="col-md-3" style="margin-right: 4px">
+    <h4 class="mt-3">Contact No: 11111111111</h4>
+    <h6>Email address: abc@gmail.com</h6>
+  </div>
+</div>
+<a class="" href="{% url 'home' %}">
+  </a>
+<div class="container">
+  <div class="row">
+  </div>
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-info text-white navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'images/brand.png' %}" alt="logo" style="width: 40px;">
+   
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <!-- Links -->
+  
+
+  <ul class="navbar-nav ml-auto text-white" style="margin-right: 300px">
+{% if not user.is_authenticated %}
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Home</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">About us</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Volunteers</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="{% url 'don' %}">Our workers</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Contact us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'log' %}"><span class="glyphicon glyphicon-user"></span>Login</a>
+    </li>
+
+  {% elif user.role == 1 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'up' %}">Donate Medicine</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Medicine count</a>
+      </li>
+         </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tab' %}">Show Data</a>
+      </li>
+         </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Show Data1</a>
+      </li>
+      <li class="dropdown">
+      <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+    
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+      <a class="dropdown-item" href="{% url 'cg' %}">Change Password</a>
+      <a class="dropdown-item" href="{% url 'logo' %}">Logout</a>
+    </div>
+    
+ 
+      {% elif user.role == 2 %}
+      <li class="nav-item">
+        <a class="nav-link" href="#">Org</a>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'inx' %}">Showdata</a>
+      </li>
+      <li class="dropdown">
+      <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+    
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+      <a class="dropdown-item" href="{% url 'cg' %}">Change Password</a>
+      <a class="dropdown-item" href="{% url 'logo' %}">Logout</a>
+    </div>
+  </li>
+  {% else %}
+  <!-- <ul class="navbar-nav ml-auto" style="margin-right: 80px"> -->
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Guest</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="{% url 'ser' %}">rolechange</a>
+    </li>
+<!--     <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">About us</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Our workers</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="{% url 'don' %}">Our workers</a>
+    </li>
+    <li class="nav-item" style="margin-right: 80px">
+      <a class="nav-link" href="#">Contact us</a>
+    </li> -->
+  <li class="dropdown">
+      <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+    
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+      <a class="dropdown-item" href="{% url 'cg' %}">Change Password</a>
+      <a class="dropdown-item" href="{% url 'logo' %}">Logout</a>
+    </div>
+    
+    </li>
+    {% endif %}
+    </ul>
+
+
+</div>
+
+</nav>
+
+
+
+
+
+
